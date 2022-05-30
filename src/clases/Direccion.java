@@ -1,5 +1,7 @@
 package clases;
 
+import java.util.Objects;
+
 public class Direccion {
 	private String nombre_via;
 	private int num_via;
@@ -42,6 +44,28 @@ public class Direccion {
 	public String toString() {
 		return "Direccion [nombre_via=" + nombre_via + ", num_via=" + num_via + ", cod_postal=" + cod_postal + "]";
 	}
+	
+	//Metodo eQuals y hashCode
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(cod_postal, nombre_via, num_via);
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Direccion other = (Direccion) obj;
+		return cod_postal == other.cod_postal && Objects.equals(nombre_via, other.nombre_via)
+				&& num_via == other.num_via;
+	}
+	
+	
 	
 	
 	
