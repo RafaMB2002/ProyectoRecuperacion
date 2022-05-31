@@ -2,6 +2,7 @@ package clases;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Objects;
 
@@ -10,7 +11,7 @@ public class Persona{
 	private String nombre;
 	private String ap1;
 	private String ap2;
-	private Calendar fecha_nac;
+	private Date fecha_nac;
 	private Direccion direccion;
 	public String getDni() {
 		return dni;
@@ -36,10 +37,10 @@ public class Persona{
 	public void setAp2(String ap2) {
 		this.ap2 = ap2;
 	}
-	public Calendar getFecha_nac() {
+	public Date getFecha_nac() {
 		return fecha_nac;
 	}
-	public void setFecha_nac(Calendar fecha_nac) {
+	public void setFecha_nac(Date fecha_nac) {
 		this.fecha_nac = fecha_nac;
 	}
 	public Direccion getDireccion() {
@@ -48,7 +49,7 @@ public class Persona{
 	public void setDireccion(Direccion direccion) {
 		this.direccion = direccion;
 	}
-	public Persona(String dni, String nombre, String ap1, String ap2, Calendar fecha_nac, Direccion direccion) {
+	public Persona(String dni, String nombre, String ap1, String ap2, Date fecha_nac, Direccion direccion) {
 		super();
 		this.dni = dni;
 		this.nombre = nombre;
