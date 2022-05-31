@@ -11,4 +11,6 @@ public class Persona {
 	private String ap2;
 	private Calendar fecha_nac;
 	private Direccion direccion;
+	
+	
 }
