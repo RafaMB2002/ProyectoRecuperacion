@@ -1,10 +1,12 @@
 package clases;
 
+import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Locale;
 
-public class Empleado extends Persona{
+public abstract class Empleado extends Persona{
 	private Date fecha_alta;
 	private Oficina oficina;
 	
@@ -30,16 +32,31 @@ public class Empleado extends Persona{
 	
 	public int antiguedad() {
 		int antiguedad=0;
+		Calendar fecha = new GregorianCalendar();
+		Date fechaActual = fecha.getTime();
 		
+		Calendar a = getCalendar(this.getFecha_alta());
+		Calendar b = getCalendar(fechaActual);
 		
+		antiguedad = b.get(Calendar.YEAR) - a.get(Calendar.YEAR);
 		
-		
+		if (a.get(Calendar.MONTH) > b.get(Calendar.MONTH) ||
+	            (a.get(Calendar.MONTH) == b.get(Calendar.MONTH) &&   
+	            a.get(Calendar.DATE) > b.get(Calendar.DATE))) {
+	            antiguedad--;
+	        }
 		
 		return antiguedad;
 		
 	}
 	
+	public static Calendar getCalendar(Date date) {
+        Calendar cal = Calendar.getInstance(Locale.US);
+        cal.setTime(date);
+        return cal;
+    }
 	
+	public abstract double nomina(int mes);
 	
 	}
 	

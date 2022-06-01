@@ -20,4 +20,28 @@ public class Vendedor extends Empleado{
 		this.zona = zona;
 	}
 
+	@Override
+	public double nomina(int mes) {
+		double nomina=0;
+		int sueldoPorDia=0;
+		final int sueldoBase = 500;
+		final int sueldoAntiguedad = antiguedad()*25;
+		
+		if(mes == 2) {
+			sueldoPorDia = 6*28;
+		}
+		if(mes == 4 || mes == 6 || mes == 9 || mes == 11) {
+			sueldoPorDia = 6*30;
+		}
+		if(mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes == 8 || mes == 10 || mes == 12) {
+			sueldoPorDia = 6*31;
+		}
+		
+		nomina = sueldoBase+sueldoAntiguedad+sueldoPorDia;
+		
+		return nomina;
+	}
+	
+	
+
 }
