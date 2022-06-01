@@ -75,6 +75,7 @@ public class Persona{
 			&& Objects.equals(direccion, other.direccion) && Objects.equals(dni, other.dni)
 				&& Objects.equals(fecha_nac, other.fecha_nac) && Objects.equals(nombre, other.nombre);
 	}
+	
 	@Override
 	public String toString() {
 		return "Persona [dni=" + dni + ", nombre=" + nombre + ", ap1=" + ap1 + ", ap2=" + ap2 + ", fecha_nac="

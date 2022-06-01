@@ -39,7 +39,8 @@ public class Programador extends Empleado{
 			sueldoPorDia = 5*31;
 		}
 		sueldoPorTecnologia = tecnologia.size()*20;
-		nomina = sueldoBase+sueldoAntiguedad+sueldoPorDia+sueldoPorTecnologia;
+		
+		nomina = sueldoBase+sueldoAntiguedad+sueldoPorDia+sueldoPorTecnologia; 
 		
 		return nomina;
 	}
