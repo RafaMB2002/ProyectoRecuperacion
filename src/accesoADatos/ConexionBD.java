@@ -7,7 +7,7 @@ import java.sql.Statement;
 
 import javax.swing.JOptionPane;
 
-public class conexionBD {
+public class ConexionBD {
 	//Declaracion de atributos
 		public static final String URL = "jdbc:oracle:thin:@localhost:1521:xe";
 		public static final String usuario = "System";

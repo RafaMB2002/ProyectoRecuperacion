@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 import clases.Direccion;
 
 
-public class repositorioDireccion {
+public class RepositorioDireccion {
 	PreparedStatement ps=null;
 	ResultSet rs=null;
 	
@@ -21,7 +21,7 @@ public class repositorioDireccion {
 		
 		
 		try {
-			conexionBD con = new conexionBD();
+			ConexionBD con = new ConexionBD();
 			Connection conexion = con.getConnection();
 			
 			ps=conexion.prepareStatement("SELECT * from direccion_java where cod_direccion= '"+codigo+"'");
@@ -46,7 +46,7 @@ public class repositorioDireccion {
 		
 		
 		try {
-			conexionBD con = new conexionBD();
+			ConexionBD con = new ConexionBD();
 			Connection conexion = con.getConnection();
 			
 			ps=conexion.prepareStatement("SELECT * from direccion_java");
@@ -68,7 +68,7 @@ public class repositorioDireccion {
 			
 			try {
 				
-				conexionBD con = new conexionBD();
+				ConexionBD con = new ConexionBD();
 				Connection conexion = con.getConnection();
 				
 				ps = conexion.prepareStatement("INSERT INTO direccion_java VALUES(?,?,?,?)");
@@ -96,7 +96,7 @@ public class repositorioDireccion {
 	public void updateDireccion(int codigo_direccion, String nombre_via, int num_via, int cod_postal){
 			
 			try {
-				conexionBD con = new conexionBD();
+				ConexionBD con = new ConexionBD();
 				Connection conexion = con.getConnection();
 				
 					ps = conexion.prepareStatement("UPDATE direccion_java set nombre_via=?, num_via=?, cod_postal=? where cod_direccion=?");
@@ -125,7 +125,7 @@ public class repositorioDireccion {
 	public void deleteDireccion(int codigo_direccion){
 		
 		try {
-			conexionBD con = new conexionBD();
+			ConexionBD con = new ConexionBD();
 			Connection conexion = con.getConnection();
 			
 			ps = conexion.prepareStatement("DELETE FROM direccion_java where cod_direccion=?");

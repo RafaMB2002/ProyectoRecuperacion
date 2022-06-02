@@ -9,6 +9,9 @@ create table direccion_java(
 Insert into direccion_java values(12, 'consolacion', 8, 23746);
 Insert into direccion_java values(13, 'arjona', 8, 23746);
 
+select *
+from direccion_java;
+
 create table oficina_java2(
     codigo number,
     nombre varchar2(25),
