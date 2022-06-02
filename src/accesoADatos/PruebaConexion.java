@@ -4,17 +4,20 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import clases.Direccion;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.Vector;
 import java.awt.event.ActionEvent;
 
 public class PruebaConexion extends JFrame {
-	public static final String URL = "jdbc:oracle:thin:@localhost:1521:xe";
-	public static final String usuario = "System";
-	public static final String password = "1477";
 	private JPanel contentPane;
 
 	/**
@@ -47,8 +50,17 @@ public class PruebaConexion extends JFrame {
 		JButton btnNewButton = new JButton("Conectar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				repositorioDireccion repoDireccion = new repositorioDireccion();
 				conexionBD con = new conexionBD();
-				Connection conexion = con.getConnection();
+				con.getConnection();
+				
+				
+				ArrayList<Direccion> vectorDireccion = new ArrayList<Direccion>();
+				vectorDireccion=repoDireccion.getDireccion(12);
+				
+				for (Direccion i : vectorDireccion){
+					JOptionPane.showMessageDialog(null, vectorDireccion);
+				}
 			}
 		});
 		contentPane.add(btnNewButton, BorderLayout.CENTER);

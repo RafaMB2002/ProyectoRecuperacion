@@ -3,6 +3,7 @@ package clases;
 import java.util.Objects;
 
 public class Direccion {
+	private int codigo_direccion;
 	private String nombre_via;
 	private int num_via;
 	private int cod_postal;
@@ -11,6 +12,12 @@ public class Direccion {
 	
 	public String getNombre_via() {
 		return nombre_via;
+	}
+	public int getCodigo_direccion() {
+		return codigo_direccion;
+	}
+	public void setCodigo_direccion(int codigo_direccion) {
+		this.codigo_direccion = codigo_direccion;
 	}
 	public void setNombre_via(String nombre_via) {
 		this.nombre_via = nombre_via;
@@ -31,8 +38,9 @@ public class Direccion {
 	
 	//Metodo Constructor
 	
-	public Direccion(String nombre_via, int num_via, int cod_postal) {
+	public Direccion(int codigo_direccion, String nombre_via, int num_via, int cod_postal) {
 		super();
+		this.codigo_direccion = codigo_direccion;
 		this.nombre_via = nombre_via;
 		this.num_via = num_via;
 		this.cod_postal = cod_postal;
