@@ -10,6 +10,7 @@ import javax.swing.border.EmptyBorder;
 
 import clases.Direccion;
 import clases.Oficina;
+import clases.Persona;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -52,11 +53,12 @@ public class PruebaConexion extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				RepositorioOficina repoOficina = new RepositorioOficina();
-				ArrayList<Oficina> arrayOficina = new ArrayList<Oficina>();
+				RepositorioPersona repoPersona = new RepositorioPersona();
+				ArrayList<Persona> arrayPersona = new ArrayList<Persona>();
 				
+					System.out.println(repoPersona.getPersona("54593460Q"));
 				
-					  repoOficina.deleteOficina(101);
+					 
 					 
 					
 			}
