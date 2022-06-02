@@ -40,8 +40,6 @@ public class repositorioDireccion {
 	}
 	
 	public ArrayList<Direccion> getDirecciones(){
-		PreparedStatement ps=null;
-		ResultSet rs=null;
 		
 		ArrayList<Direccion> vectorDirecciones = new ArrayList<Direccion>();
 		Direccion direccion = null;
@@ -68,16 +66,12 @@ public class repositorioDireccion {
 	
 	public void newDireccion(int codigo_direccion, String nombre_via, int num_via, int cod_postal){
 			
-			PreparedStatement ps=null;
-			ResultSet rs=null;
-			
-			Direccion direccion = new Direccion(codigo_direccion, nombre_via, num_via, cod_postal);
-			
 			try {
+				
 				conexionBD con = new conexionBD();
 				Connection conexion = con.getConnection();
 				
-				ps = conexion.prepareStatement("INSERT INTO direccion_java VALUES(?,?,?,?,?)");
+				ps = conexion.prepareStatement("INSERT INTO direccion_java VALUES(?,?,?,?)");
 				ps.setInt(1, codigo_direccion);
 				ps.setString(2, nombre_via);
 				ps.setInt(3, num_via);
@@ -101,18 +95,9 @@ public class repositorioDireccion {
 	
 	public void updateDireccion(int codigo_direccion, String nombre_via, int num_via, int cod_postal){
 			
-			PreparedStatement ps=null;
-			ResultSet rs=null;
-			
-			Direccion direccion = new Direccion(codigo_direccion, nombre_via, num_via, cod_postal);
-			
 			try {
 				conexionBD con = new conexionBD();
 				Connection conexion = con.getConnection();
-				
-				ps = conexion.prepareStatement("select cod_direccion from direccion_java where cod_direccion=?");
-				ps.setInt(1, codigo_direccion);
-				rs = ps.executeQuery();
 				
 					ps = conexion.prepareStatement("UPDATE direccion_java set nombre_via=?, num_via=?, cod_postal=? where cod_direccion=?");
 					
@@ -139,14 +124,11 @@ public class repositorioDireccion {
 		}
 	public void deleteDireccion(int codigo_direccion){
 		
-		PreparedStatement ps=null;
-		ResultSet rs=null;
-		
 		try {
 			conexionBD con = new conexionBD();
 			Connection conexion = con.getConnection();
 			
-			ps = conexion.prepareStatement("DELETE FROM direccion_java where cod_direccion?");
+			ps = conexion.prepareStatement("DELETE FROM direccion_java where cod_direccion=?");
 			ps.setInt(1, codigo_direccion);
 			
 			int resultado = ps.executeUpdate();

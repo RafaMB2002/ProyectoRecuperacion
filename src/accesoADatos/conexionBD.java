@@ -24,7 +24,7 @@ public class conexionBD {
 				try {
 					Class.forName("oracle.jdbc.driver.OracleDriver");
 					conexion = (Connection) DriverManager.getConnection(URL, usuario, password);
-					JOptionPane.showMessageDialog(null, "Conexion correcta!");
+					//JOptionPane.showMessageDialog(null, "Conexion correcta!");
 				}catch(Exception ex) {
 					System.out.println("Error, "+ex);
 				}	

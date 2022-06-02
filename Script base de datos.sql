@@ -6,6 +6,9 @@ create table direccion_java(
     CONSTRAINT PK_direccion_java PRIMARY KEY (cod_direccion)
 );
 
+Insert into direccion_java values(12, 'consolacion', 8, 23746);
+Insert into direccion_java values(13, 'arjona', 8, 23746);
+
 create table oficina_java2(
     codigo number,
     nombre varchar2(25),
@@ -47,3 +50,5 @@ create table vendedor_java(
     CONSTRAINT PK_vendedor_java PRIMARY KEY (dni),
     FOREIGN KEY (dni) REFERENCES empleado_java(dni)
 );
+
+commit;
