@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import clases.Direccion;
+import clases.Oficina;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -50,18 +51,14 @@ public class PruebaConexion extends JFrame {
 		JButton btnNewButton = new JButton("Conectar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				repositorioDireccion repoDireccion = new repositorioDireccion();
 				
-				//repoDireccion.newDireccion(14, "andujar", 9, 23746);
-//				ArrayList<Direccion> arrayDireccion = new ArrayList<Direccion>();
-//				arrayDireccion = repoDireccion.getDirecciones();
-//				
-//				for (Direccion i : arrayDireccion) {
-//					  System.out.println(arrayDireccion);
-//					}
+				RepositorioOficina repoOficina = new RepositorioOficina();
+				ArrayList<Oficina> arrayOficina = new ArrayList<Oficina>();
 				
-				repoDireccion.updateDireccion(13,"Orecera",0,23746);
-	
+				
+					  repoOficina.deleteOficina(101);
+					 
+					
 			}
 		});
 		contentPane.add(btnNewButton, BorderLayout.CENTER);

@@ -1,6 +1,7 @@
 package clases;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -12,7 +13,7 @@ public class Persona{
 	private String ap1;
 	private String ap2;
 	private Date fecha_nac;
-	private Direccion direccion;
+	private ArrayList<Direccion> direccion;
 	public String getDni() {
 		return dni;
 	}
@@ -43,13 +44,13 @@ public class Persona{
 	public void setFecha_nac(Date fecha_nac) {
 		this.fecha_nac = fecha_nac;
 	}
-	public Direccion getDireccion() {
+	public ArrayList<Direccion> getDireccion() {
 		return direccion;
 	}
-	public void setDireccion(Direccion direccion) {
+	public void setDireccion(ArrayList<Direccion> direccion) {
 		this.direccion = direccion;
 	}
-	public Persona(String dni, String nombre, String ap1, String ap2, Date fecha_nac, Direccion direccion) {
+	public Persona(String dni, String nombre, String ap1, String ap2, Date fecha_nac, ArrayList<Direccion> direccion) {
 		super();
 		this.dni = dni;
 		this.nombre = nombre;
@@ -79,7 +80,7 @@ public class Persona{
 	@Override
 	public String toString() {
 		return "Persona [dni=" + dni + ", nombre=" + nombre + ", ap1=" + ap1 + ", ap2=" + ap2 + ", fecha_nac="
-				+ fecha_nac + ", direccion=" + direccion + "]";
+				+ fecha_nac + ", direccion=" + direccion + "]\n";
 	}
 	
 	

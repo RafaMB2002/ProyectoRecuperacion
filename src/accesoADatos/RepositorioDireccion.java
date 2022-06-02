@@ -40,7 +40,8 @@ public class RepositorioDireccion {
 	}
 	
 	public ArrayList<Direccion> getDirecciones(){
-		
+		PreparedStatement ps=null;
+		ResultSet rs=null;
 		ArrayList<Direccion> vectorDirecciones = new ArrayList<Direccion>();
 		Direccion direccion = null;
 		

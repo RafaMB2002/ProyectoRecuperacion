@@ -1,6 +1,7 @@
 package clases;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -23,7 +24,7 @@ public abstract class Empleado extends Persona{
 		this.oficina = oficina;
 	}
 	
-	public Empleado(String dni, String nombre, String ap1, String ap2, Date fecha_nac, Direccion direccion,
+	public Empleado(String dni, String nombre, String ap1, String ap2, Date fecha_nac, ArrayList<Direccion> direccion,
 			Date fecha_alta, Oficina oficina) {
 		super(dni, nombre, ap1, ap2, fecha_nac, direccion);
 		this.fecha_alta = fecha_alta;

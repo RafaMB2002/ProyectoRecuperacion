@@ -1,11 +1,12 @@
 package clases;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Oficina {
 	private int codigo;
 	private String nombre;
-	private Direccion direccion;
+	private ArrayList<Direccion> direccion;
 	
 	public int getCodigo() {
 		return codigo;
@@ -19,25 +20,25 @@ public class Oficina {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public Direccion getDireccion() {
+	public ArrayList<Direccion> direccion() {
 		return direccion;
 	}
-	public void setDireccion(Direccion direccion) {
+	public void setDireccion(ArrayList<Direccion> direccion) {
 		this.direccion = direccion;
 	}
 	
-	public Oficina(int codigo, String nombre, Direccion direccion) {
+	public Oficina(int codigo, String nombre, ArrayList<Direccion> direccion) {
 		super();
 		this.codigo = codigo;
 		this.nombre = nombre;
 		this.direccion = direccion;
 	}
 	
+	
 	@Override
 	public String toString() {
-		return "Oficina [codigo=" + codigo + ", nombre=" + nombre + ", direccion=" + direccion + "]";
+		return "Oficina [codigo=" + codigo + ", nombre=" + nombre + ", direccion=" + direccion + "]\n";
 	}
-	
 	@Override
 	public int hashCode() {
 		return Objects.hash(codigo, direccion, nombre);

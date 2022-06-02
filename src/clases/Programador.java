@@ -15,7 +15,7 @@ public class Programador extends Empleado{
 		this.tecnologia = tecnologia;
 	}
 
-	public Programador(String dni, String nombre, String ap1, String ap2, Date fecha_nac, Direccion direccion,
+	public Programador(String dni, String nombre, String ap1, String ap2, Date fecha_nac, ArrayList<Direccion> direccion,
 			Date fecha_alta, Oficina oficina, ArrayList tecnologia) {
 		super(dni, nombre, ap1, ap2, fecha_nac, direccion, fecha_alta, oficina);
 		this.tecnologia = tecnologia;
