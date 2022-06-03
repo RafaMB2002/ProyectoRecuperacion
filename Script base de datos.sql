@@ -20,6 +20,12 @@ create table oficina_java2(
     FOREIGN KEY (direccion) REFERENCES direccion_java(cod_direccion)
 );
 
+Insert into oficina_java2 values(001, 'Oficina1', 13);
+Insert into oficina_java2 values(002, 'Oficina2', 14);
+
+select *
+from oficina_java2;
+
 create table persona_java(
     dni varchar2(9) not null,
     nombre varchar2(25),
@@ -30,6 +36,10 @@ create table persona_java(
     CONSTRAINT PK_Persona PRIMARY KEY (dni),
     FOREIGN KEY (direccion) REFERENCES direccion_java(cod_direccion)
 );
+Insert into persona_java values('54593460Q', 'Rafael', 'Montoro', 'Berdonces', '23-02-2002', 13);
+
+select *
+from persona_java;
 
 create table empleado_java2(
     dni varchar2(9) not null,

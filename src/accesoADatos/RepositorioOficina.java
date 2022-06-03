@@ -11,25 +11,22 @@ import clases.Direccion;
 import clases.Oficina;
 
 public class RepositorioOficina {
-	RepositorioDireccion repoDireccion = new RepositorioDireccion();
-	PreparedStatement ps=null;
-	ResultSet rs=null;
 	
-	public ArrayList<Oficina> getOficina(int codigo){
-			
+	
+	public static ArrayList<Oficina> getOficina(int codigo){
+		PreparedStatement ps=null;
+		ResultSet rs=null;
 			ArrayList<Oficina> arrayOficina = new ArrayList<Oficina>();
 			Oficina oficina = null;
 			
 			
 			try {
-				ConexionBD con = new ConexionBD();
-				Connection conexion = con.getConnection();
 				
-				ps=conexion.prepareStatement("SELECT * from oficina_java2 where codigo= '"+codigo+"'");
+				ps=ConexionBD.cn.prepareStatement("SELECT * from oficina_java2 where codigo= '"+codigo+"'");
 				rs=ps.executeQuery();
 	
 				while(rs.next()) {
-					oficina= new Oficina(rs.getInt("codigo"), rs.getString("nombre"), repoDireccion.getDireccion(rs.getInt("direccion")));
+					oficina= new Oficina(rs.getInt("codigo"), rs.getString("nombre"), RepositorioDireccion.getDireccion(rs.getInt("direccion")));
 					arrayOficina.add(oficina);
 				}
 				
@@ -40,21 +37,20 @@ public class RepositorioOficina {
 			return arrayOficina;
 		}
 	
-	public ArrayList<Oficina> getOficinas(){
-			
+	public static ArrayList<Oficina> getOficinas(){
+		PreparedStatement ps=null;
+		ResultSet rs=null;
 			ArrayList<Oficina> vectorOficinas = new ArrayList<Oficina>();
 			Oficina oficina = null;
 			
 			
 			try {
-				ConexionBD con = new ConexionBD();
-				Connection conexion = con.getConnection();
 				
-				ps=conexion.prepareStatement("SELECT * from oficina_java2");
+				ps=ConexionBD.cn.prepareStatement("SELECT * from oficina_java2");
 				rs=ps.executeQuery();
 				
 				while(rs.next()) {
-					oficina= new Oficina(rs.getInt("codigo"), rs.getString("nombre"), repoDireccion.getDireccion(rs.getInt("direccion")));
+					oficina= new Oficina(rs.getInt("codigo"), rs.getString("nombre"), RepositorioDireccion.getDireccion(rs.getInt("direccion")));
 					vectorOficinas.add(oficina);
 				}
 				
@@ -65,14 +61,12 @@ public class RepositorioOficina {
 			return vectorOficinas;
 		}
 	
-	public void newOficina(int codigo, String nombre, int direccion){
-		
+	public static void newOficina(int codigo, String nombre, int direccion){
+		PreparedStatement ps=null;
+		ResultSet rs=null;
 		try {
 			
-			ConexionBD con = new ConexionBD();
-			Connection conexion = con.getConnection();
-			
-			ps = conexion.prepareStatement("INSERT INTO oficina_java2 VALUES(?,?,?)");
+			ps = ConexionBD.cn.prepareStatement("INSERT INTO oficina_java2 VALUES(?,?,?)");
 			ps.setInt(1, codigo);
 			ps.setString(2, nombre);
 			ps.setInt(3, direccion);
@@ -86,19 +80,18 @@ public class RepositorioOficina {
 				JOptionPane.showMessageDialog(null, "No se pudo crear, falta algun dato");
 			}
 			
-			conexion.close();
+			ConexionBD.cn.close();
 		}catch(Exception ex) {
 			JOptionPane.showMessageDialog(null, "Error :"+ex);
 		}
 		
 	}
-	public void updateOficina(int codigo, String nombre, int direccion){
-		
+	public static void updateOficina(int codigo, String nombre, int direccion){
+		PreparedStatement ps=null;
+		ResultSet rs=null;
 		try {
-			ConexionBD con = new ConexionBD();
-			Connection conexion = con.getConnection();
 			
-				ps = conexion.prepareStatement("UPDATE oficina_java2 set nombre=?, direccion=? where codigo=?");
+				ps = ConexionBD.cn.prepareStatement("UPDATE oficina_java2 set nombre=?, direccion=? where codigo=?");
 				
 				ps.setString(1, nombre);
 				ps.setInt(2, direccion);
@@ -113,20 +106,19 @@ public class RepositorioOficina {
 				}
 			
 			
-			conexion.close();
+			ConexionBD.cn.close();
 		}catch(Exception ex) {
 			JOptionPane.showMessageDialog(null, "Error :"+ex);
 		}
 		
 		
 	}
-public void deleteOficina(int codigo){
-		
+public static void deleteOficina(int codigo){
+	PreparedStatement ps=null;
+	ResultSet rs=null;
 		try {
-			ConexionBD con = new ConexionBD();
-			Connection conexion = con.getConnection();
 			
-			ps = conexion.prepareStatement("DELETE FROM oficina_java2 where codigo=?");
+			ps = ConexionBD.cn.prepareStatement("DELETE FROM oficina_java2 where codigo=?");
 			ps.setInt(1, codigo);
 			
 			int resultado = ps.executeUpdate();
