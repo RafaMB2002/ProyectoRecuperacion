@@ -1,3 +1,11 @@
+drop table vendedor_java;
+drop table programador_java;
+drop table empleado_java2;
+drop table persona_java;
+drop table oficina_java2;
+drop table direccion_java;
+
+
 create table direccion_java(
     cod_direccion number,
     nombre_via varchar2(25),
@@ -21,7 +29,7 @@ create table oficina_java2(
 );
 
 Insert into oficina_java2 values(001, 'Oficina1', 13);
-Insert into oficina_java2 values(002, 'Oficina2', 14);
+Insert into oficina_java2 values(002, 'Oficina2', 12);
 
 select *
 from oficina_java2;
@@ -33,10 +41,10 @@ create table persona_java(
     ap2 varchar(25),
     fecha_nac date,
     direccion number,
+    tipo varchar2(20), --Empleado o cliente
     CONSTRAINT PK_Persona PRIMARY KEY (dni),
     FOREIGN KEY (direccion) REFERENCES direccion_java(cod_direccion)
 );
-Insert into persona_java values('54593460Q', 'Rafael', 'Montoro', 'Berdonces', '23-02-2002', 13);
 
 select *
 from persona_java;
@@ -45,6 +53,7 @@ create table empleado_java2(
     dni varchar2(9) not null,
     fecha_alta date,
     oficina number,
+    tipo varchar2(10), --venderdeor o programador
     CONSTRAINT PK_empleado PRIMARY KEY (dni),
     FOREIGN KEY (dni) REFERENCES persona_java(dni),
     FOREIGN KEY (oficina) REFERENCES oficina_java2(codigo)
