@@ -3,18 +3,18 @@ package clases;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
+import java.sql.Date;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 
 public abstract class Empleado extends Persona{
-	private Date fecha_alta;
+	private String fecha_alta;
 	private Oficina oficina;
 	
-	public Date getFecha_alta() {
+	public String getFecha_alta() {
 		return fecha_alta;
 	}
-	public void setFecha_alta(Date fecha_alta) {
+	public void setFecha_alta(String fecha_alta) {
 		this.fecha_alta = fecha_alta;
 	}
 	public Oficina getOficina() {
@@ -24,19 +24,20 @@ public abstract class Empleado extends Persona{
 		this.oficina = oficina;
 	}
 	
-	public Empleado(String dni, String nombre, String ap1, String ap2, Date fecha_nac, ArrayList<Direccion> direccion,
-			Date fecha_alta, Oficina oficina) {
+	public Empleado(String dni, String nombre, String ap1, String ap2, String fecha_nac, ArrayList<Direccion> direccion,
+			String fecha_alta, Oficina oficina) {
 		super(dni, nombre, ap1, ap2, fecha_nac, direccion);
 		this.fecha_alta = fecha_alta;
 		this.oficina = oficina;
 	}
 	
 	public int antiguedad() {
+		Date fecha1 = Date.valueOf(this.getFecha_alta());
 		int antiguedad=0;
 		Calendar fecha = new GregorianCalendar();
-		Date fechaActual = fecha.getTime();
+		Date fechaActual = (Date) fecha.getTime();
 		
-		Calendar a = getCalendar(this.getFecha_alta());
+		Calendar a = getCalendar(fecha1);
 		Calendar b = getCalendar(fechaActual);
 		
 		antiguedad = b.get(Calendar.YEAR) - a.get(Calendar.YEAR);

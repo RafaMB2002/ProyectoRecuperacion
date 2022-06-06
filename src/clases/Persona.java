@@ -12,7 +12,7 @@ public class Persona{
 	private String nombre;
 	private String ap1;
 	private String ap2;
-	private Date fecha_nac;
+	private String fecha_nac;
 	private ArrayList<Direccion> direccion;
 	public String getDni() {
 		return dni;
@@ -38,10 +38,10 @@ public class Persona{
 	public void setAp2(String ap2) {
 		this.ap2 = ap2;
 	}
-	public Date getFecha_nac() {
+	public String getFecha_nac() {
 		return fecha_nac;
 	}
-	public void setFecha_nac(Date fecha_nac) {
+	public void setFecha_nac(String fecha_nac) {
 		this.fecha_nac = fecha_nac;
 	}
 	public ArrayList<Direccion> getDireccion() {
@@ -50,7 +50,7 @@ public class Persona{
 	public void setDireccion(ArrayList<Direccion> direccion) {
 		this.direccion = direccion;
 	}
-	public Persona(String dni, String nombre, String ap1, String ap2, Date fecha_nac, ArrayList<Direccion> direccion) {
+	public Persona(String dni, String nombre, String ap1, String ap2, String fecha_nac, ArrayList<Direccion> direccion) {
 		super();
 		this.dni = dni;
 		this.nombre = nombre;

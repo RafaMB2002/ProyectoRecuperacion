@@ -22,7 +22,7 @@ public class Main {
 	
 		
 		RepositorioProgramador.newProgramador("54593460Q", "Rafael", "Montoro", "Berdonces", "23-02-2002", 12,
-				"Empleado", "23-02-2015", 12, "Programador", "HTML#CSS#JAVA");
+				"Empleado", "23-02-2015", 1, "Programador", "HTML#CSS#JAVA");
 		
 	
 		

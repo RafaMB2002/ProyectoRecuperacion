@@ -41,7 +41,7 @@ create table persona_java(
     ap2 varchar(25),
     fecha_nac date,
     direccion number,
-    tipo varchar2(20), --Empleado o cliente
+    tipo varchar2(50), --Empleado o cliente
     CONSTRAINT PK_Persona PRIMARY KEY (dni),
     FOREIGN KEY (direccion) REFERENCES direccion_java(cod_direccion)
 );
@@ -53,11 +53,14 @@ create table empleado_java2(
     dni varchar2(9) not null,
     fecha_alta date,
     oficina number,
-    tipo varchar2(10), --venderdeor o programador
+    tipo varchar2(50), --venderdeor o programador
     CONSTRAINT PK_empleado PRIMARY KEY (dni),
     FOREIGN KEY (dni) REFERENCES persona_java(dni),
     FOREIGN KEY (oficina) REFERENCES oficina_java2(codigo)
 );
+
+select *
+from empleado_java2;
 
 create table programador_java(
     dni varchar2(9) not null,
@@ -72,5 +75,7 @@ create table vendedor_java(
     CONSTRAINT PK_vendedor_java PRIMARY KEY (dni),
     FOREIGN KEY (dni) REFERENCES empleado_java(dni)
 );
+
+delete from persona_java;
 
 commit;

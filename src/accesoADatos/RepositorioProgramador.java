@@ -26,11 +26,14 @@ public class RepositorioProgramador {
 		
 		try {
 			
-			ps=ConexionBD.cn.prepareStatement("SELECT * from oficina_java2 where codigo= '"+dni+"'");
+			ps=ConexionBD.cn.prepareStatement("SELECT * from persona_java where dni= '"+dni+"'");
+			ps=ConexionBD.cn.prepareStatement("SELECT * from empleado_java2 where dni= '"+dni+"'");
+			ps=ConexionBD.cn.prepareStatement("SELECT * from programador_java where dni= '"+dni+"'");
 			rs=ps.executeQuery();
 
 			while(rs.next()) {
-				//programador= new Programador();
+//				programador= new Programador(rs.getString("dni"), rs.getString("nombre"), rs.getString("ap1"), rs.getString("ap2"), rs.getDate("fecha_nac"), RepositorioDireccion.getDireccion(rs.getInt("direccion")),
+//						rs.getDate("fecha_alta"), RepositorioOficina.getOficina(rs.getInt("oficina")), rs.getString("tecnologia"));
 				arrayProgramador.add(programador);
 			}
 			
@@ -73,14 +76,13 @@ public class RepositorioProgramador {
 		//Insert de Persona
 		try {
 					
-					ps = ConexionBD.cn.prepareStatement("INSERT INTO persona_java VALUES(?,?,?,?,?,?,?)");
+					ps = ConexionBD.cn.prepareStatement("INSERT INTO persona_java VALUES(?,?,?,?,TO_DATE('"+fecha_nac+"','DD-MM-YYYY'),?,?)");
 					ps.setString(1, dni);
 					ps.setString(2, nombre);
 					ps.setString(3, ap1);
 					ps.setString(4, ap2);
-					ps.setDate(5, Date.valueOf(fecha_nac));
-					ps.setInt(6, direccion);
-					ps.setString(7, tipoPersona);
+					ps.setInt(5, direccion);
+					ps.setString(6, tipoPersona);
 					
 					int resultado = ps.executeUpdate();
 					
@@ -90,7 +92,7 @@ public class RepositorioProgramador {
 						JOptionPane.showMessageDialog(null, "No se pudo crear, falta algun dato");
 					}
 					
-					ConexionBD.cn.close();
+					//ConexionBD.cn.close();
 				}catch(Exception ex) {
 					JOptionPane.showMessageDialog(null, "Error :"+ex);
 				}
@@ -102,11 +104,10 @@ public class RepositorioProgramador {
 		//Insert de empleado
 				try {
 					
-					ps = ConexionBD.cn.prepareStatement("INSERT INTO empleado_java2 VALUES(?,?,?,?)");
+					ps = ConexionBD.cn.prepareStatement("INSERT INTO empleado_java2 VALUES(?,TO_DATE('"+fecha_alta+"','DD-MM-YYYY'),?,?)");
 					ps.setString(1, dni);
-					ps.setDate(2, Date.valueOf(fecha_alta));
-					ps.setInt(3, oficina);
-					ps.setString(4, tipoEmpleado);
+					ps.setInt(2, oficina);
+					ps.setString(3, tipoEmpleado);
 					
 					int resultado = ps.executeUpdate();
 					
@@ -116,7 +117,7 @@ public class RepositorioProgramador {
 						JOptionPane.showMessageDialog(null, "No se pudo crear, falta algun dato");
 					}
 					
-					ConexionBD.cn.close();
+					//ConexionBD.cn.close();
 				}catch(Exception ex) {
 					JOptionPane.showMessageDialog(null, "Error :"+ex);
 				}
