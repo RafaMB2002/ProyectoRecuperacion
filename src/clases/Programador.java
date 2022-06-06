@@ -16,7 +16,7 @@ public class Programador extends Empleado{
 	}
 
 	public Programador(String dni, String nombre, String ap1, String ap2, String fecha_nac, ArrayList<Direccion> direccion,
-			String fecha_alta, Oficina oficina, ArrayList tecnologia) {
+			String fecha_alta, ArrayList<Oficina> oficina, ArrayList tecnologia) {
 		super(dni, nombre, ap1, ap2, fecha_nac, direccion, fecha_alta, oficina);
 		this.tecnologia = tecnologia;
 	}
@@ -43,6 +43,14 @@ public class Programador extends Empleado{
 		nomina = sueldoBase+sueldoAntiguedad+sueldoPorDia+sueldoPorTecnologia; 
 		
 		return nomina;
+	}
+
+	@Override
+	public String toString() {
+		return "Persona [dni=" + this.getDni() + ", nombre=" + this.getNombre() + ", ap1=" + this.getAp1() + ", ap2=" + this.getAp2() + ", fecha_nac="
+				+ this.getFecha_nac() + ", direccion=" + this.getDireccion() + "]\n"
+						+ "Empleado [fecha_alta=" + this.getFecha_alta() + ", oficina=" + this.getOficina() + "]\n"
+						+ "Programador [tecnologia=" + this.getTecnologia() + "]";
 	}
 	
 	

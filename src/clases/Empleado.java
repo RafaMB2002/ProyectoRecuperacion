@@ -9,7 +9,7 @@ import java.util.Locale;
 
 public abstract class Empleado extends Persona{
 	private String fecha_alta;
-	private Oficina oficina;
+	private ArrayList<Oficina> oficina;
 	
 	public String getFecha_alta() {
 		return fecha_alta;
@@ -17,15 +17,19 @@ public abstract class Empleado extends Persona{
 	public void setFecha_alta(String fecha_alta) {
 		this.fecha_alta = fecha_alta;
 	}
-	public Oficina getOficina() {
+	public ArrayList<Oficina> getOficina() {
 		return oficina;
 	}
-	public void setOficina(Oficina oficina) {
+	public void setOficina(ArrayList<Oficina> oficina) {
 		this.oficina = oficina;
 	}
 	
+	@Override
+	public String toString() {
+		return "Empleado [fecha_alta=" + fecha_alta + ", oficina=" + oficina + "]";
+	}
 	public Empleado(String dni, String nombre, String ap1, String ap2, String fecha_nac, ArrayList<Direccion> direccion,
-			String fecha_alta, Oficina oficina) {
+			String fecha_alta, ArrayList<Oficina> oficina) {
 		super(dni, nombre, ap1, ap2, fecha_nac, direccion);
 		this.fecha_alta = fecha_alta;
 		this.oficina = oficina;

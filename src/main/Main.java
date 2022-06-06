@@ -20,9 +20,10 @@ public class Main {
 		ConexionBD.abreConexion();
 	
 	
+		//RepositorioProgramador.newProgramador("11111111Q", "Juan", "Berdonces", "Cubillas", "11-11-1999", 12, "Empleado", "11-11-1111", 1, "Preogramador", "JAVA#CSS#HTML");
+		System.out.println(RepositorioProgramador.getProgramadores());
 		
-		RepositorioProgramador.newProgramador("54593460Q", "Rafael", "Montoro", "Berdonces", "23-02-2002", 12,
-				"Empleado", "23-02-2015", 1, "Programador", "HTML#CSS#JAVA");
+	
 		
 	
 		

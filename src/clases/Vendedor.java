@@ -16,7 +16,7 @@ public class Vendedor extends Empleado{
 	}
 
 	public Vendedor(String dni, String nombre, String ap1, String ap2, String fecha_nac, ArrayList<Direccion> direccion,
-			String fecha_alta, Oficina oficina, String zona) {
+			String fecha_alta, ArrayList<Oficina> oficina, String zona) {
 		super(dni, nombre, ap1, ap2, fecha_nac, direccion, fecha_alta, oficina);
 		this.zona = zona;
 	}

@@ -16,7 +16,7 @@ import clases.Programador;
 
 public class RepositorioProgramador {
 	
-	public static ArrayList<Programador> getProgramador(int dni){
+	public static ArrayList<Programador> getProgramador(String dni){
 		PreparedStatement ps=null;
 		ResultSet rs=null;
 		
@@ -26,14 +26,50 @@ public class RepositorioProgramador {
 		
 		try {
 			
-			ps=ConexionBD.cn.prepareStatement("SELECT * from persona_java where dni= '"+dni+"'");
-			ps=ConexionBD.cn.prepareStatement("SELECT * from empleado_java2 where dni= '"+dni+"'");
-			ps=ConexionBD.cn.prepareStatement("SELECT * from programador_java where dni= '"+dni+"'");
+			ps=ConexionBD.cn.prepareStatement("select p.*, e.*, pro.* from persona_java p join empleado_java2 e on p.dni = e.dni join programador_java pro on e.dni = pro.dni where p.dni = '"+dni+"'");
 			rs=ps.executeQuery();
-
+			
 			while(rs.next()) {
-//				programador= new Programador(rs.getString("dni"), rs.getString("nombre"), rs.getString("ap1"), rs.getString("ap2"), rs.getDate("fecha_nac"), RepositorioDireccion.getDireccion(rs.getInt("direccion")),
-//						rs.getDate("fecha_alta"), RepositorioOficina.getOficina(rs.getInt("oficina")), rs.getString("tecnologia"));
+				String [] tecno = rs.getString("tecnologias").split("#");
+				ArrayList<String> tecnologia = new ArrayList<String>();
+				
+				for (int i = 0; i < tecno.length; i++)
+		            tecnologia.add(tecno[i]);
+				
+				programador= new Programador(rs.getString("dni"), rs.getString("nombre"), rs.getString("ap1"), rs.getString("ap2"), rs.getString("fecha_nac"), RepositorioDireccion.getDireccion(rs.getInt("direccion")),
+						rs.getString("fecha_alta"), RepositorioOficina.getOficina(rs.getInt("oficina")), tecnologia);
+				arrayProgramador.add(programador);
+			}
+			
+			rs.close();
+		}catch(Exception ex) {
+			JOptionPane.showMessageDialog(null, "Error: "+ex);
+		}
+		return arrayProgramador;
+	}
+	
+	public static ArrayList<Programador> getProgramadores(){
+		PreparedStatement ps=null;
+		ResultSet rs=null;
+		
+		ArrayList<Programador> arrayProgramador = new ArrayList<Programador>();
+		Programador programador = null;
+		
+		
+		try {
+			
+			ps=ConexionBD.cn.prepareStatement("select p.*, e.*, pro.* from persona_java p join empleado_java2 e on p.dni = e.dni join programador_java pro on e.dni = pro.dni");
+			rs=ps.executeQuery();
+			
+			while(rs.next()) {
+				String [] tecno = rs.getString("tecnologias").split("#");
+				ArrayList<String> tecnologia = new ArrayList<String>();
+				
+				for (int i = 0; i < tecno.length; i++)
+		            tecnologia.add(tecno[i]);
+				
+				programador= new Programador(rs.getString("dni"), rs.getString("nombre"), rs.getString("ap1"), rs.getString("ap2"), rs.getString("fecha_nac"), RepositorioDireccion.getDireccion(rs.getInt("direccion")),
+						rs.getString("fecha_alta"), RepositorioOficina.getOficina(rs.getInt("oficina")), tecnologia);
 				arrayProgramador.add(programador);
 			}
 			
@@ -91,8 +127,7 @@ public class RepositorioProgramador {
 					}else{
 						JOptionPane.showMessageDialog(null, "No se pudo crear, falta algun dato");
 					}
-					
-					//ConexionBD.cn.close();
+
 				}catch(Exception ex) {
 					JOptionPane.showMessageDialog(null, "Error :"+ex);
 				}
@@ -117,7 +152,6 @@ public class RepositorioProgramador {
 						JOptionPane.showMessageDialog(null, "No se pudo crear, falta algun dato");
 					}
 					
-					//ConexionBD.cn.close();
 				}catch(Exception ex) {
 					JOptionPane.showMessageDialog(null, "Error :"+ex);
 				}
@@ -125,7 +159,7 @@ public class RepositorioProgramador {
 	
 	public static void newProgramador(String dni, String nombre, String ap1, String ap2, String fecha_nac, int direccion,
 			String tipoPersona, String fecha_alta, int oficina, String tipoEmpleado, String tecnologia){
-		//String [] tecno = tecnologia.split("#");
+		
 		
 		crearPersona(dni, nombre, ap1, ap2, fecha_nac, direccion, tipoPersona);
 		crearEmpleado(dni, fecha_alta, oficina, tipoEmpleado);
