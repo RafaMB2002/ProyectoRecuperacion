@@ -8,7 +8,7 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-public class VentanaEmpleado extends JDialog {
+public class VentanaProgramador extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 
@@ -16,9 +16,10 @@ public class VentanaEmpleado extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public VentanaEmpleado() {
+	public VentanaProgramador() {
 		setModal(true);
 		setResizable(false);
+		setTitle("Programadores");
 		setBounds(100, 100, 720, 480);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setLayout(new FlowLayout());

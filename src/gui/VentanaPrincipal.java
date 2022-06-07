@@ -54,15 +54,30 @@ public class VentanaPrincipal extends JFrame {
 		menuItemDireccion.setFont(new Font("Arial", Font.PLAIN, 14));
 		menuBarPrincipal.add(menuItemDireccion);
 		
-		JMenuItem menuItemEmpleado = new JMenuItem("Empleado");
-		menuItemEmpleado.addActionListener(new ActionListener() {
+		JMenu menuEmpleado = new JMenu("Empleados");
+		menuEmpleado.setFont(new Font("Arial", Font.PLAIN, 14));
+		menuBarPrincipal.add(menuEmpleado);
+		
+		JMenuItem mntmNewMenuItem = new JMenuItem("Vendedor");
+		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VentanaEmpleado ventanaEmple = new VentanaEmpleado();
-				ventanaEmple.setVisible(true);
+				VentanaVendedor ventanaVend = new VentanaVendedor();
+				ventanaVend.setVisible(true);
+				
 			}
 		});
-		menuItemEmpleado.setFont(new Font("Arial", Font.PLAIN, 14));
-		menuBarPrincipal.add(menuItemEmpleado);
+		mntmNewMenuItem.setFont(new Font("Arial", Font.PLAIN, 14));
+		menuEmpleado.add(mntmNewMenuItem);
+		
+		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Programador");
+		mntmNewMenuItem_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VentanaProgramador ventanaProg = new VentanaProgramador();
+				ventanaProg.setVisible(true);
+			}
+		});
+		mntmNewMenuItem_1.setFont(new Font("Arial", Font.PLAIN, 14));
+		menuEmpleado.add(mntmNewMenuItem_1);
 		panelPrincipal = new JPanel();
 		panelPrincipal.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(panelPrincipal);
