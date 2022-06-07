@@ -66,8 +66,18 @@ create table programador_java(
     dni varchar2(9) not null,
     tecnologias varchar2(300),
     CONSTRAINT PK_programador_java PRIMARY KEY (dni),
-    FOREIGN KEY (dni) REFERENCES empleado_java(dni)
+    FOREIGN KEY (dni) REFERENCES empleado_java2(dni)
 );
+
+select *
+from programador_java;
+
+select p.*, e.*, pro.*
+from persona_java p join empleado_java2 e on p.dni = e.dni join programador_java pro on e.dni = pro.dni
+where p.dni = '54593460Q';
+
+select p.*, e.*, pro.*
+from persona_java p join empleado_java2 e on p.dni = e.dni join programador_java pro on e.dni = pro.dni;
 
 create table vendedor_java(
     dni varchar2(9) not null,
@@ -77,5 +87,6 @@ create table vendedor_java(
 );
 
 delete from persona_java;
+delete from empleado_java2;
 
 commit;

@@ -7,18 +7,27 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Objects;
 
-public class Persona{
+import excepciones.ExcepcionDni;
+import helpers.ValidarDNI;
+
+public class Persona {
 	private String dni;
 	private String nombre;
 	private String ap1;
 	private String ap2;
 	private String fecha_nac;
 	private ArrayList<Direccion> direccion;
+	
 	public String getDni() {
 		return dni;
 	}
-	public void setDni(String dni) {
-		this.dni = dni;
+	public void setDni (String dni) throws ExcepcionDni {
+		if(ValidarDNI.validaDNI(dni)==true) {
+			this.dni = dni;
+		}else {
+			throw new ExcepcionDni();
+		}
+		
 	}
 	public String getNombre() {
 		return nombre;
