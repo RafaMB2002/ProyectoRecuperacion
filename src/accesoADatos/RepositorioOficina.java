@@ -12,11 +12,12 @@ import clases.Oficina;
 
 public class RepositorioOficina {
 	
-	
-	public static ArrayList<Oficina> getOficina(int codigo){
+	/*
+	 * Devuelve un ArrayList de una oficina en especifico
+	 */
+	public static Oficina getOficina(int codigo){
 		PreparedStatement ps=null;
 		ResultSet rs=null;
-			ArrayList<Oficina> arrayOficina = new ArrayList<Oficina>();
 			Oficina oficina = null;
 			
 			
@@ -27,16 +28,17 @@ public class RepositorioOficina {
 	
 				while(rs.next()) {
 					oficina= new Oficina(rs.getInt("codigo"), rs.getString("nombre"), RepositorioDireccion.getDireccion(rs.getInt("direccion")));
-					arrayOficina.add(oficina);
 				}
 				
 				rs.close();
 			}catch(Exception ex) {
 				JOptionPane.showMessageDialog(null, "Error: "+ex);
 			}
-			return arrayOficina;
+			return oficina;
 		}
-	
+	/*
+	 * Devuelve un ArrayList de todas las oficinas
+	 */
 	public static ArrayList<Oficina> getOficinas(){
 		PreparedStatement ps=null;
 		ResultSet rs=null;
@@ -60,16 +62,18 @@ public class RepositorioOficina {
 			}
 			return vectorOficinas;
 		}
-	
-	public static void newOficina(int codigo, String nombre, int direccion){
+	/*
+	 * Crea una nueva oficina
+	 */
+	public static void newOficina(Oficina oficina){
 		PreparedStatement ps=null;
 		ResultSet rs=null;
 		try {
 			
 			ps = ConexionBD.cn.prepareStatement("INSERT INTO oficina_java2 VALUES(?,?,?)");
-			ps.setInt(1, codigo);
-			ps.setString(2, nombre);
-			ps.setInt(3, direccion);
+			ps.setInt(1, oficina.getCodigo());
+			ps.setString(2, oficina.getNombre());
+			ps.setInt(3, oficina.getDireccion().getCodigo_direccion());
 			
 			
 			int resultado = ps.executeUpdate();
@@ -86,16 +90,20 @@ public class RepositorioOficina {
 		}
 		
 	}
-	public static void updateOficina(int codigo, String nombre, int direccion){
+	/*
+	 * Actualiza una oficina
+	 */
+	public static void updateOficina(Oficina oficina){
+		
 		PreparedStatement ps=null;
 		ResultSet rs=null;
 		try {
 			
 				ps = ConexionBD.cn.prepareStatement("UPDATE oficina_java2 set nombre=?, direccion=? where codigo=?");
 				
-				ps.setString(1, nombre);
-				ps.setInt(2, direccion);
-				ps.setInt(3, codigo);
+				ps.setString(1, oficina.getNombre());
+				ps.setInt(2, oficina.getDireccion().getCodigo_direccion());
+				ps.setInt(3, oficina.getCodigo());
 				
 				int resultado = ps.executeUpdate();
 				
@@ -113,6 +121,9 @@ public class RepositorioOficina {
 		
 		
 	}
+	/*
+	 * Elimina una oficina
+	 */
 public static void deleteOficina(int codigo){
 	PreparedStatement ps=null;
 	ResultSet rs=null;

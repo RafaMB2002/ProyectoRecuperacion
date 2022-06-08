@@ -6,8 +6,8 @@ import java.util.Calendar;
 
 public class Cliente extends Persona{
 
-	public Cliente(String dni, String nombre, String ap1, String ap2, String fecha_nac, ArrayList<Direccion> direccion) {
-		super(dni, nombre, ap1, ap2, fecha_nac, direccion);
+	public Cliente(String dni, String nombre, String ap1, String ap2, String fecha_nac, String tipo_persona, Direccion direccion) {
+		super(dni, nombre, ap1, ap2, fecha_nac, tipo_persona, direccion);
 		// TODO Auto-generated constructor stub
 	}
 

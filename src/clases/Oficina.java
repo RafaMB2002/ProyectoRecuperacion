@@ -6,7 +6,7 @@ import java.util.Objects;
 public class Oficina {
 	private int codigo;
 	private String nombre;
-	private ArrayList<Direccion> direccion;
+	private Direccion direccion;
 	
 	public int getCodigo() {
 		return codigo;
@@ -20,14 +20,14 @@ public class Oficina {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public ArrayList<Direccion> direccion() {
+	public Direccion getDireccion() {
 		return direccion;
 	}
-	public void setDireccion(ArrayList<Direccion> direccion) {
+	public void setDireccion(Direccion direccion) {
 		this.direccion = direccion;
 	}
 	
-	public Oficina(int codigo, String nombre, ArrayList<Direccion> direccion) {
+	public Oficina(int codigo, String nombre, Direccion direccion) {
 		super();
 		this.codigo = codigo;
 		this.nombre = nombre;

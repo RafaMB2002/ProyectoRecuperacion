@@ -12,14 +12,14 @@ import clases.Direccion;
 
 public class RepositorioDireccion {
 	
-	
-	public static ArrayList<Direccion> getDireccion(int codigo){
+	/*Devuelve un ArrayList de una direccion en especifico
+	 * 
+	 */
+	public static Direccion getDireccion(int codigo){
 		PreparedStatement ps=null;
 		ResultSet rs=null;
 		
-		ArrayList<Direccion> arrayDireccion = new ArrayList<Direccion>();
 		Direccion direccion = null;
-		
 		
 		try {
 			
@@ -29,16 +29,17 @@ public class RepositorioDireccion {
 
 			while(rs.next()) {
 				direccion= new Direccion(rs.getInt("cod_direccion"),rs.getString("nombre_via"),rs.getInt("num_via"),rs.getInt("cod_postal"));
-				arrayDireccion.add(direccion);
 			}
 			
 			rs.close();
 		}catch(Exception ex) {
 			JOptionPane.showMessageDialog(null, "Error: "+ex);
 		}
-		return arrayDireccion;
+		return direccion;
 	}
-	
+	/*
+	 * Devuelve un ArrayList de todas las direcciones
+	 */
 	public static ArrayList<Direccion> getDirecciones(){
 		PreparedStatement ps=null;
 		ResultSet rs=null;
@@ -62,8 +63,11 @@ public class RepositorioDireccion {
 		}
 		return vectorDirecciones;
 	}
-	
-	public static void newDireccion(int codigo_direccion, String nombre_via, int num_via, int cod_postal){
+	/*
+	 * Crea una nueva direccion
+	 */
+	public static void newDireccion(Direccion direccion){
+		
 		PreparedStatement ps=null;
 		ResultSet rs=null;
 			try {
@@ -71,10 +75,10 @@ public class RepositorioDireccion {
 				
 				
 				ps = ConexionBD.cn.prepareStatement("INSERT INTO direccion_java VALUES(?,?,?,?)");
-				ps.setInt(1, codigo_direccion);
-				ps.setString(2, nombre_via);
-				ps.setInt(3, num_via);
-				ps.setInt(4, cod_postal);
+				ps.setInt(1, direccion.getCodigo_direccion());
+				ps.setString(2, direccion.getNombre_via());
+				ps.setInt(3, direccion.getNum_via());
+				ps.setInt(4, direccion.getCod_postal());
 				
 				
 				int resultado = ps.executeUpdate();
@@ -91,8 +95,11 @@ public class RepositorioDireccion {
 			}
 			
 		}
-	
-	public static void updateDireccion(int codigo_direccion, String nombre_via, int num_via, int cod_postal){
+	/*
+	 * Actualiza una direccion
+	 */
+	public static void updateDireccion(Direccion direccion){
+		
 		PreparedStatement ps=null;
 		ResultSet rs=null;
 			try {
@@ -100,10 +107,10 @@ public class RepositorioDireccion {
 				
 					ps = ConexionBD.cn.prepareStatement("UPDATE direccion_java set nombre_via=?, num_via=?, cod_postal=? where cod_direccion=?");
 					
-					ps.setString(1, nombre_via);
-					ps.setInt(2, num_via);
-					ps.setInt(3, cod_postal);
-					ps.setInt(4, codigo_direccion);
+					ps.setString(1, direccion.getNombre_via());
+					ps.setInt(2, direccion.getNum_via());
+					ps.setInt(3, direccion.getCod_postal());
+					ps.setInt(4, direccion.getCodigo_direccion());
 					
 					int resultado = ps.executeUpdate();
 					
@@ -121,6 +128,9 @@ public class RepositorioDireccion {
 			
 			
 		}
+	/*
+	 * Elimina una direccion
+	 */
 	public static void deleteDireccion(int codigo_direccion){
 		PreparedStatement ps=null;
 		ResultSet rs=null;

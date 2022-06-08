@@ -16,7 +16,8 @@ public class Persona {
 	private String ap1;
 	private String ap2;
 	private String fecha_nac;
-	private ArrayList<Direccion> direccion;
+	private String tipo_persona;
+	private Direccion direccion;
 	
 	public String getDni() {
 		return dni;
@@ -31,6 +32,12 @@ public class Persona {
 	}
 	public String getNombre() {
 		return nombre;
+	}
+	public String getTipo_persona() {
+		return tipo_persona;
+	}
+	public void setTipo_persona(String tipo_persona) {
+		this.tipo_persona = tipo_persona;
 	}
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
@@ -53,19 +60,20 @@ public class Persona {
 	public void setFecha_nac(String fecha_nac) {
 		this.fecha_nac = fecha_nac;
 	}
-	public ArrayList<Direccion> getDireccion() {
+	public Direccion getDireccion() {
 		return direccion;
 	}
-	public void setDireccion(ArrayList<Direccion> direccion) {
+	public void setDireccion(Direccion direccion) {
 		this.direccion = direccion;
 	}
-	public Persona(String dni, String nombre, String ap1, String ap2, String fecha_nac, ArrayList<Direccion> direccion) {
+	public Persona(String dni, String nombre, String ap1, String ap2, String fecha_nac, String tipo_persona, Direccion direccion) {
 		super();
 		this.dni = dni;
 		this.nombre = nombre;
 		this.ap1 = ap1;
 		this.ap2 = ap2;
 		this.fecha_nac = fecha_nac;
+		this.tipo_persona = tipo_persona;
 		this.direccion = direccion;
 	}
 	@Override

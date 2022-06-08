@@ -9,18 +9,25 @@ import java.util.Locale;
 
 public abstract class Empleado extends Persona{
 	private String fecha_alta;
-	private ArrayList<Oficina> oficina;
+	private String tipo_empleado;
+	private Oficina oficina;
 	
 	public String getFecha_alta() {
 		return fecha_alta;
 	}
+	public String getTipo_empleado() {
+		return tipo_empleado;
+	}
+	public void setTipo_empleado(String tipo_empleado) {
+		this.tipo_empleado = tipo_empleado;
+	}
 	public void setFecha_alta(String fecha_alta) {
 		this.fecha_alta = fecha_alta;
 	}
-	public ArrayList<Oficina> getOficina() {
+	public Oficina getOficina() {
 		return oficina;
 	}
-	public void setOficina(ArrayList<Oficina> oficina) {
+	public void setOficina(Oficina oficina) {
 		this.oficina = oficina;
 	}
 	
@@ -28,10 +35,11 @@ public abstract class Empleado extends Persona{
 	public String toString() {
 		return "Empleado [fecha_alta=" + fecha_alta + ", oficina=" + oficina + "]";
 	}
-	public Empleado(String dni, String nombre, String ap1, String ap2, String fecha_nac, ArrayList<Direccion> direccion,
-			String fecha_alta, ArrayList<Oficina> oficina) {
-		super(dni, nombre, ap1, ap2, fecha_nac, direccion);
+	public Empleado(String dni, String nombre, String ap1, String ap2, String fecha_nac, String tipo_persona, Direccion direccion,
+			String fecha_alta, String tipo_empleado, Oficina oficina) {
+		super(dni, nombre, ap1, ap2, fecha_nac, tipo_persona, direccion);
 		this.fecha_alta = fecha_alta;
+		this.tipo_empleado = tipo_empleado;
 		this.oficina = oficina;
 	}
 	
