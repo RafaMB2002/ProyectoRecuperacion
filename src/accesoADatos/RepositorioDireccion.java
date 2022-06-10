@@ -40,10 +40,10 @@ public class RepositorioDireccion {
 	/*
 	 * Devuelve un ArrayList de todas las direcciones
 	 */
-	public static ArrayList<Direccion> getDirecciones(){
+	public static Vector<Direccion> getDirecciones(){
 		PreparedStatement ps=null;
 		ResultSet rs=null;
-		ArrayList<Direccion> vectorDirecciones = new ArrayList<Direccion>();
+		Vector<Direccion> vectorDirecciones = new Vector<Direccion>();
 		Direccion direccion = null;
 		
 		

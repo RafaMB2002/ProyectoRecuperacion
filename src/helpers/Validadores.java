@@ -3,7 +3,7 @@ package helpers;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class ValidarDNI {
+public class Validadores {
 
 	Scanner lector = new Scanner(System.in);
 

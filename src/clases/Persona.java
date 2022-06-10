@@ -8,7 +8,7 @@ import java.util.GregorianCalendar;
 import java.util.Objects;
 
 import excepciones.ExcepcionDni;
-import helpers.ValidarDNI;
+import helpers.Validadores;
 
 public class Persona {
 	private String dni;
@@ -23,7 +23,7 @@ public class Persona {
 		return dni;
 	}
 	public void setDni (String dni) throws ExcepcionDni {
-		if(ValidarDNI.validaDNI(dni)==true) {
+		if(Validadores.validaDNI(dni)==true) {
 			this.dni = dni;
 		}else {
 			throw new ExcepcionDni();

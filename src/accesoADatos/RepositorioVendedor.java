@@ -1,5 +1,6 @@
 package accesoADatos;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -23,9 +24,11 @@ public class RepositorioVendedor {
 			rs=ps.executeQuery();
 			
 			while(rs.next()) {
+				String fecha_nac = rs.getDate("fecha_nac").toString();
+				String fecha_alta = rs.getDate("fecha_alta").toString();
 				
-				vendedor= new Vendedor(rs.getString("dni"), rs.getString("nombre"), rs.getString("ap1"), rs.getString("ap2"), rs.getString("fecha_nac"), rs.getString("tipo_persona"), RepositorioDireccion.getDireccion(rs.getInt("direccion")),
-						rs.getString("fecha_alta"), rs.getString("tipo_empleado"), RepositorioOficina.getOficina(rs.getInt("oficina")), rs.getString("zonas"));
+				vendedor= new Vendedor(rs.getString("dni"), rs.getString("nombre"), rs.getString("ap1"), rs.getString("ap2"), fecha_nac, rs.getString("tipo_persona"), RepositorioDireccion.getDireccion(rs.getInt("direccion")),
+						fecha_alta, rs.getString("tipo_empleado"), RepositorioOficina.getOficina(rs.getInt("oficina")), rs.getString("zonas"));
 			}
 			
 			rs.close();
@@ -245,5 +248,30 @@ try {
 }catch(Exception ex){
 	JOptionPane.showMessageDialog(null, "Error :"+ex);
 }
+		}
+	
+		public static boolean comprobarExistencia(String dni) {
+			PreparedStatement ps=null;
+			ResultSet rs=null;
+			
+			Vendedor vendedor = null;
+			boolean resultado = false;
+			
+			
+			try {
+				
+				ps=ConexionBD.cn.prepareStatement("select p.*, e.*, ven.* from persona_java p join empleado_java2 e on p.dni = e.dni join vendedor_java ven on e.dni = ven.dni where p.dni = '"+dni+"'");
+				rs=ps.executeQuery();
+				
+				if(rs.next()) {
+					resultado = true;
+				}
+				
+				rs.close();
+			}catch(Exception ex) {
+				JOptionPane.showMessageDialog(null, "Error: "+ex);
+			}
+			return resultado;
+			
 		}
 }

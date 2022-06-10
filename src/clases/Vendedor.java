@@ -42,6 +42,13 @@ public class Vendedor extends Empleado{
 		
 		return nomina;
 	}
+
+	@Override
+	public String toString() {
+		return this.getDni()+" "+this.getNombre()+" "+this.getAp1();
+	}
+
+	
 	
 	
 

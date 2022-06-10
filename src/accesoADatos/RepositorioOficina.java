@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Vector;
 
 import javax.swing.JOptionPane;
 
@@ -39,10 +40,10 @@ public class RepositorioOficina {
 	/*
 	 * Devuelve un ArrayList de todas las oficinas
 	 */
-	public static ArrayList<Oficina> getOficinas(){
+	public static Vector<Oficina> getOficinas(){
 		PreparedStatement ps=null;
 		ResultSet rs=null;
-			ArrayList<Oficina> vectorOficinas = new ArrayList<Oficina>();
+			Vector<Oficina> vectorOficinas = new Vector<Oficina>();
 			Oficina oficina = null;
 			
 			

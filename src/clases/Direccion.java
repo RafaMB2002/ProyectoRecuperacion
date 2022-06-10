@@ -50,7 +50,7 @@ public class Direccion {
 	
 	@Override
 	public String toString() {
-		return "Direccion [nombre_via=" + nombre_via + ", num_via=" + num_via + ", cod_postal=" + cod_postal + "]\n";
+		return "Calle: "+nombre_via+" Num: "+num_via;
 	}
 	
 	//Metodo eQuals y hashCode
