@@ -37,10 +37,29 @@ public class VentanaVendedor extends JDialog {
 	private JTextField textFieldAP1;
 	private JTextField textFieldAP2;
 	private JTextField textField_zona;
-	private JTextField textField;
+	private JTextField textFieldDireccion;
 	private JComboBox comboBox_oficina;
 	private JDateChooser dateChooser_fecha_nac;
 	private JDateChooser dateChooser_fecha_alta;
+	
+	private void limpiarCampos() {
+		textFieldDNI.setText("");
+		textFieldDNI.setEnabled(true);
+		textFieldNombre.setText("");
+		textFieldNombre.setEnabled(false);
+		textFieldAP1.setText("");
+		textFieldAP1.setEnabled(false);
+		textFieldAP2.setText("");
+		textFieldAP2.setEnabled(false);
+		dateChooser_fecha_nac.setDate(null);
+		dateChooser_fecha_nac.setEnabled(false);
+		dateChooser_fecha_alta.setDate(null);
+		dateChooser_fecha_alta.setEnabled(false);
+		comboBox_oficina.setEnabled(false);
+		textField_zona.setEnabled(false);
+		textField_zona.setText("");
+		
+	}
 
 	/**
 	 * Create the dialog.
@@ -152,7 +171,7 @@ public class VentanaVendedor extends JDialog {
 		comboBox_oficina.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Oficina ofi =(Oficina)comboBox_oficina.getSelectedItem();
-				textField.setText(ofi.getDireccion().toString());
+				textFieldDireccion.setText(ofi.getDireccion().toString());
 			}
 		});
 				
@@ -179,6 +198,7 @@ public class VentanaVendedor extends JDialog {
 					RepositorioVendedor.newVendedor(new Vendedor(textFieldDNI.getText(), textFieldNombre.getText(), textFieldAP1.getText(), textFieldAP2.getText(), fechanac, "Emleado", ofi.getDireccion(),
 							fechaalta,"Vendedor",(Oficina) comboBox_oficina.getSelectedItem(), textField_zona.getText()));
 				}
+				limpiarCampos();
 			}
 		});
 		btnNewButton_guardar.setIcon(new ImageIcon(VentanaVendedor.class.getResource("/images/btnGuardar.png")));
@@ -189,6 +209,7 @@ public class VentanaVendedor extends JDialog {
 		btnNewButton_borrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				RepositorioVendedor.deleteVendedor(textFieldDNI.getText());
+				limpiarCampos();
 			}
 		});
 		btnNewButton_borrar.setIcon(new ImageIcon(VentanaVendedor.class.getResource("/images/btnBorrar.png")));
@@ -196,20 +217,25 @@ public class VentanaVendedor extends JDialog {
 		getContentPane().add(btnNewButton_borrar);
 		
 		JButton btnNewButton_restablecer = new JButton("");
+		btnNewButton_restablecer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				limpiarCampos();
+			}
+		});
 		btnNewButton_restablecer.setIcon(new ImageIcon(VentanaVendedor.class.getResource("/images/restablecer.png")));
 		btnNewButton_restablecer.setBounds(634, 361, 50, 50);
 		getContentPane().add(btnNewButton_restablecer);
 		
-		textField = new JTextField();
-		textField.setEditable(false);
-		textField.setFont(new Font("Arial", Font.PLAIN, 14));
-		textField.addActionListener(new ActionListener() {
+		textFieldDireccion = new JTextField();
+		textFieldDireccion.setEditable(false);
+		textFieldDireccion.setFont(new Font("Arial", Font.PLAIN, 14));
+		textFieldDireccion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		textField.setBounds(483, 115, 178, 19);
-		getContentPane().add(textField);
-		textField.setColumns(10);
+		textFieldDireccion.setBounds(483, 115, 178, 19);
+		getContentPane().add(textFieldDireccion);
+		textFieldDireccion.setColumns(10);
 		
 		JButton btnNewButton = new JButton("");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -265,6 +291,7 @@ public class VentanaVendedor extends JDialog {
 			public void actionPerformed(ActionEvent e) {
 				VentanaBuscarVendedor buscarV = new VentanaBuscarVendedor();
 				buscarV.setVisible(true);
+				textFieldDNI.setText(buscarV.v.getDni());
 			}
 		});
 		btnNewButton_1.setIcon(new ImageIcon(VentanaVendedor.class.getResource("/images/lista.png")));

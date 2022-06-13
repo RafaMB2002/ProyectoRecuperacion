@@ -47,10 +47,11 @@ public abstract class Empleado extends Persona{
 		Date fecha1 = Date.valueOf(this.getFecha_alta());
 		int antiguedad=0;
 		Calendar fecha = new GregorianCalendar();
-		Date fechaActual = (Date) fecha.getTime();
+		
+		
 		
 		Calendar a = getCalendar(fecha1);
-		Calendar b = getCalendar(fechaActual);
+		Calendar b = helpers.Converters.toCalendar(fecha.getTime());
 		
 		antiguedad = b.get(Calendar.YEAR) - a.get(Calendar.YEAR);
 		

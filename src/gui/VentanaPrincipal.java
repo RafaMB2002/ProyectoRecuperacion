@@ -25,6 +25,7 @@ public class VentanaPrincipal extends JFrame {
 	 * Create the frame.
 	 */
 	public VentanaPrincipal() {
+		setResizable(false);
 		setTitle("Empresa Programacion");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 720, 480);
@@ -88,6 +89,12 @@ public class VentanaPrincipal extends JFrame {
 		mnNewMenu.add(mntmNewMenuItem_2);
 		
 		JMenuItem mntmNewMenuItem_3 = new JMenuItem("Vendedores");
+		mntmNewMenuItem_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VentanaListadoVendedor v = new VentanaListadoVendedor();
+				v.setVisible(true);
+			}
+		});
 		mntmNewMenuItem_3.setFont(new Font("Arial", Font.PLAIN, 14));
 		mnNewMenu.add(mntmNewMenuItem_3);
 		panelPrincipal = new JPanel();

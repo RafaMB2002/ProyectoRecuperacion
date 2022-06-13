@@ -124,7 +124,7 @@ public class RepositorioVendedor {
 				JOptionPane.showMessageDialog(null, "No se pudo crear, falta algun dato");
 			}
 			
-			ConexionBD.cn.close();
+			//ConexionBD.cn.close();
 		}catch(Exception ex) {
 			JOptionPane.showMessageDialog(null, "Error :"+ex);
 		}
@@ -193,7 +193,7 @@ public class RepositorioVendedor {
 			}
 		
 		
-		ConexionBD.cn.close();
+		//ConexionBD.cn.close();
 	}catch(Exception ex) {
 		JOptionPane.showMessageDialog(null, "Error :"+ex);
 	}
@@ -274,4 +274,6 @@ try {
 			return resultado;
 			
 		}
+		
+		
 }

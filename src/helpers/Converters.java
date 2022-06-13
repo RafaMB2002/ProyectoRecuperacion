@@ -37,5 +37,11 @@ public class Converters {
 		}
 		return date;
 	}
+	
+	public static Calendar toCalendar(Date date){ 
+		  Calendar cal = Calendar.getInstance();
+		  cal.setTime(date);
+		  return cal;
+		}
 
 }

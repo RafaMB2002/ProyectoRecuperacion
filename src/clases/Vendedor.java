@@ -45,10 +45,13 @@ public class Vendedor extends Empleado{
 
 	@Override
 	public String toString() {
-		return this.getDni()+" "+this.getNombre()+" "+this.getAp1();
+		return this.getDni();
 	}
 
-	
+	public String getNombreCompleto() {
+		return this.getNombre()+" "+this.getAp1()+" "+this.getAp2();
+		
+	}
 	
 	
 

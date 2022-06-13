@@ -17,6 +17,7 @@ import accesoADatos.RepositorioOficina;
 import accesoADatos.RepositorioProgramador;
 import accesoADatos.RepositorioVendedor;
 import clases.Direccion;
+import clases.Empleado;
 import clases.Oficina;
 import clases.Programador;
 import clases.Vendedor;
@@ -39,7 +40,9 @@ public class Main {
 //		}
 		
 		
-		//Vendedor v = RepositorioVendedor.getVendedor("54593460Q");
+//		Empleado e = RepositorioVendedor.getVendedor("54593460Q");
+//		double nom = e.nomina(4);
+	//	System.out.println(nom);
 		
 		//System.out.println(v.getFecha_nac());
 		
