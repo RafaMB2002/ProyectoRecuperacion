@@ -97,6 +97,16 @@ public class VentanaPrincipal extends JFrame {
 		});
 		mntmNewMenuItem_3.setFont(new Font("Arial", Font.PLAIN, 14));
 		mnNewMenu.add(mntmNewMenuItem_3);
+		
+		JMenuItem mntmNewMenuItem_4 = new JMenuItem("Nominas");
+		mntmNewMenuItem_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VentanaListadoNomina vln = new VentanaListadoNomina();
+				vln.setVisible(true);
+			}
+		});
+		mntmNewMenuItem_4.setFont(new Font("Arial", Font.PLAIN, 14));
+		mnNewMenu.add(mntmNewMenuItem_4);
 		panelPrincipal = new JPanel();
 		panelPrincipal.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(panelPrincipal);

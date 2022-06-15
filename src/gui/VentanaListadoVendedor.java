@@ -8,6 +8,8 @@ import javax.swing.JScrollPane;
 import java.awt.BorderLayout;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 import accesoADatos.RepositorioVendedor;
 
@@ -42,6 +44,9 @@ public class VentanaListadoVendedor extends JDialog {
 			tableModel.addRow(v);
 		}
 		table.setModel(tableModel);
+		
+		TableRowSorter<TableModel> ordenaTabla = new TableRowSorter<TableModel>(tableModel);
+		table.setRowSorter(ordenaTabla);
 
 	}
 

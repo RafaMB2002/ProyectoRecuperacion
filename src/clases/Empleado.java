@@ -30,7 +30,6 @@ public abstract class Empleado extends Persona{
 	public void setOficina(Oficina oficina) {
 		this.oficina = oficina;
 	}
-	
 	@Override
 	public String toString() {
 		return "Empleado [fecha_alta=" + fecha_alta + ", oficina=" + oficina + "]";

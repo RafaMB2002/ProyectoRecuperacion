@@ -66,6 +66,8 @@ public class Persona {
 	public void setDireccion(Direccion direccion) {
 		this.direccion = direccion;
 	}
+	
+	
 	public Persona(String dni, String nombre, String ap1, String ap2, String fecha_nac, String tipo_persona, Direccion direccion) {
 		super();
 		this.dni = dni;
@@ -98,6 +100,11 @@ public class Persona {
 	public String toString() {
 		return "Persona [dni=" + dni + ", nombre=" + nombre + ", ap1=" + ap1 + ", ap2=" + ap2 + ", fecha_nac="
 				+ fecha_nac + ", direccion=" + direccion + "]\n";
+	}
+	
+public String getNombreCompleto() {
+		
+		return this.getNombre()+" "+this.getAp1()+" "+this.getAp2();
 	}
 	
 	
