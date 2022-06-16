@@ -30,6 +30,6 @@ public class Main {
 		
 		ConexionBD.abreConexion();
 		VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
-		ventanaPrincipal.setVisible(true); 
+		ventanaPrincipal.setVisible(true);
 	}
 }

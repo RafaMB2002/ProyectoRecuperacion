@@ -121,14 +121,14 @@ public class VentanaVendedor extends JDialog {
 		dateChooser_fecha_alta = new JDateChooser();
 		dateChooser_fecha_alta.setEnabled(false);
 		dateChooser_fecha_alta.setFont(new Font("Arial", Font.PLAIN, 14));
-		dateChooser_fecha_alta.setDateFormatString("dd-MM-YYYY");
+		dateChooser_fecha_alta.setDateFormatString("dd-MM-yyyy");
 		dateChooser_fecha_alta.setBounds(523, 71, 124, 19);
 		getContentPane().add(dateChooser_fecha_alta);
 		
 		dateChooser_fecha_nac = new JDateChooser();
 		dateChooser_fecha_nac.setEnabled(false);
 		dateChooser_fecha_nac.setFont(new Font("Arial", Font.PLAIN, 14));
-		dateChooser_fecha_nac.setDateFormatString("dd-MM-YYYY");
+		dateChooser_fecha_nac.setDateFormatString("dd-MM-yyyy");
 		dateChooser_fecha_nac.setBounds(187, 240, 118, 19);
 		getContentPane().add(dateChooser_fecha_nac);
 		
@@ -188,8 +188,8 @@ public class VentanaVendedor extends JDialog {
 			public void actionPerformed(ActionEvent e) {
 				
 				Oficina ofi =(Oficina)comboBox_oficina.getSelectedItem();
-				String fechanac = String.format("%1$td-%1$tm-%1$tY", dateChooser_fecha_nac.getDate());
-				String fechaalta = String.format("%1$td-%1$tm-%1$tY", dateChooser_fecha_alta.getDate());
+				String fechanac = helpers.Converters.DateToString(dateChooser_fecha_nac.getDate());
+				String fechaalta = helpers.Converters.DateToString(dateChooser_fecha_alta.getDate());
 				
 				if(RepositorioVendedor.comprobarExistencia(textFieldDNI.getText())==true) {
 					RepositorioVendedor.updateVendedor(new Vendedor(textFieldDNI.getText(), textFieldNombre.getText(), textFieldAP1.getText(), textFieldAP2.getText(), fechanac, "Emleado",ofi.getDireccion() ,

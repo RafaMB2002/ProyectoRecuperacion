@@ -6,6 +6,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
@@ -66,7 +67,7 @@ public class VentanaListadoNomina extends JFrame {
 					v.addElement(RepositorioEmpleado.getEmpleados().get(i).getOficina());
 					v.addElement(RepositorioEmpleado.getEmpleados().get(i).getNombreCompleto());
 					v.addElement(RepositorioEmpleado.getEmpleados().get(i).getTipo_empleado());
-					//v.addElement(RepositorioEmpleado.getEmpleados().get(i).nomina(comboMeses.getSelectedIndex()+1));
+					v.addElement(RepositorioEmpleado.getEmpleados().get(i).nomina(comboMeses.getSelectedIndex()+1));
 					tableModel.addRow(v);
 				}
 				table.setModel(tableModel);
@@ -88,6 +89,7 @@ public class VentanaListadoNomina extends JFrame {
 	    tableModel.addColumn("Nombre Completo");
 	    tableModel.addColumn("Tipo Empleado");
 	    tableModel.addColumn("Nomina");
+	    DefaultTableCellRenderer cellRenderer = new DefaultTableCellRenderer();
 	    
 	}
 

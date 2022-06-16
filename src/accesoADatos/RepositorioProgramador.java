@@ -104,12 +104,13 @@ public class RepositorioProgramador {
 			
 			int resultado = ps.executeUpdate();
 			
+			
 			if(resultado>0) {
 				JOptionPane.showMessageDialog(null, "persona creada correctamente");
 			}else{
 				JOptionPane.showMessageDialog(null, "No se pudo crear, falta algun dato");
 			}
-
+			ConexionBD.cn.close();
 		}catch(Exception ex) {
 			JOptionPane.showMessageDialog(null, "Error :"+ex);
 		}
@@ -128,7 +129,7 @@ public class RepositorioProgramador {
 			}else{
 				JOptionPane.showMessageDialog(null, "No se pudo crear, falta algun dato");
 			}
-			
+			ConexionBD.cn.close();
 		}catch(Exception ex) {
 			JOptionPane.showMessageDialog(null, "Error :"+ex);
 		}

@@ -58,7 +58,7 @@ public class RepositorioVendedor {
 				arrayVendedor.add(vendedor);
 			}
 			
-			rs.close();
+			ps.close();
 		}catch(Exception ex) {
 			JOptionPane.showMessageDialog(null, "Error: "+ex);
 		}

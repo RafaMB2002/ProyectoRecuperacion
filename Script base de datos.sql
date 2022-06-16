@@ -96,6 +96,6 @@ from persona_java p join empleado_java2 e on p.dni = e.dni join vendedor_java ve
 delete from persona_java;
 delete from empleado_java2;
 
-
+ALTER SYSTEM SET OPEN_CURSORS=1337 SID='*' SCOPE=BOTH;
 
 commit;

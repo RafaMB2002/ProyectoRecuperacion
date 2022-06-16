@@ -9,6 +9,8 @@ public class ComparadorNominas implements Comparator<Empleado> {
 		String s1=e1.getOficina().getNombre();
 		String s2=e2.getOficina().getNombre();
 		return s1.compareTo(s2);
+		
+		
 	}
 
 }

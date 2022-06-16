@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.sql.Date;
+import java.text.ParseException;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 
@@ -43,14 +44,20 @@ public abstract class Empleado extends Persona{
 	}
 	
 	public int antiguedad() {
-		Date fecha1 = Date.valueOf(this.getFecha_alta());
 		int antiguedad=0;
+		String fecha1 = this.getFecha_alta();
 		Calendar fecha = new GregorianCalendar();
 		
 		
 		
-		Calendar a = getCalendar(fecha1);
-		Calendar b = helpers.Converters.toCalendar(fecha.getTime());
+		Calendar a = null;
+		try {
+			a = helpers.Converters.StringACalendar(fecha1);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Calendar b = fecha;
 		
 		antiguedad = b.get(Calendar.YEAR) - a.get(Calendar.YEAR);
 		

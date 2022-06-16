@@ -11,11 +11,14 @@ import com.toedter.calendar.JDateChooser;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class preubas extends JFrame {
 
 	private JPanel contentPane;
 	private JDateChooser dateChooser;
+	private JTable table;
 
 	/**
 	 * Launch the application.
@@ -58,5 +61,19 @@ public class preubas extends JFrame {
 		});
 		btnNewButton.setBounds(207, 47, 85, 21);
 		contentPane.add(btnNewButton);
+		
+		table = new JTable();
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null, null},
+				{null, null, null},
+			},
+			new String[] {
+				"New column", "New column", "New column"
+			}
+		));
+		table.getColumnModel().getColumn(2).setPreferredWidth(243);
+		table.setBounds(100, 207, 102, -79);
+		contentPane.add(table);
 	}
 }

@@ -48,10 +48,6 @@ public class Vendedor extends Empleado{
 		return this.getDni();
 	}
 
-	public String getNombreCompleto() {
-		return this.getNombre()+" "+this.getAp1()+" "+this.getAp2();
-		
-	}
 	
 	
 

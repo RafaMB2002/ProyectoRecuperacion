@@ -104,7 +104,7 @@ public class Persona {
 	
 public String getNombreCompleto() {
 		
-		return this.getNombre()+" "+this.getAp1()+" "+this.getAp2();
+		return this.getAp1()+" "+this.getAp2()+" "+this.getNombre();
 	}
 	
 	

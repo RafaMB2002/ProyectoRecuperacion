@@ -16,7 +16,7 @@ public class Converters {
 		int year, month, day;
 		year = Integer.parseInt(fecha.substring(0, fecha.indexOf("-")));
 		month = Integer.parseInt(fecha.substring(5,7));
-		day = Integer.parseInt(fecha.substring(8));
+		day = Integer.parseInt(fecha.substring(8, fecha.indexOf(" ")));
 		
 		cal.set(year, month-1, day);
 		return cal;
@@ -43,5 +43,11 @@ public class Converters {
 		  cal.setTime(date);
 		  return cal;
 		}
+	
+	public static String DateToString(Date date) {
+		 SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+		   String f = sdf.format(date);
+		return f;
+	}
 
 }
